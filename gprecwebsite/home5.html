@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+
+
+    .navbar {
+      text-align: center;
+      background-color: #ADD8E6;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      padding: 1px 100px;
+      color: #000;
+    }
+
+    .navbar a:nth-child(1),
+    .navbar a:nth-child(2),
+    .navbar a:nth-child(3),
+    .navbar label,
+    .navbar select {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .navbar a:nth-child(4) {
+      float: right;
+    }
+  </style>
+  <script>
+    function redirectToPage() {
+      var selectedBranch = document.getElementById("branch").value;
+
+      if (selectedBranch === "cse") {
+        window.location.href = "cse.html";
+      }
+      if (selectedBranch === "eee") {
+        window.location.href = "eee.html";
+      }
+      if (selectedBranch === "ece") {
+        window.location.href = "ece.html";
+      }
+      if (selectedBranch === "civil") {
+        window.location.href = "civil.html";
+      }
+      if (selectedBranch === "mech") {
+        window.location.href = "mech.html";
+      }
+      
+      // Add more conditions for other branches if needed
+    }
+  </script>
+</head>
+<body>
+  <center>
+    <img src="https://www.gprec.ac.in/wp-content/uploads/2019/05/gprec_logo1.png" alt="Pulla Reddy College Image" width="300" height="150">
+    <h1 style="color: blue;">GPREC Home page</h1>
+  </center>
+    <div class="navbar">
+      <a href="home5.html">Home</a>
+      <a href="registration.html">Register</a>
+      <a href="signin.html">Signin</a>
+      <label for="state">Branch: </label>
+      <select name="bracnh" id="branch" onchange="redirectToPage()">
+        <option value="None">Select </option>
+        <option value="cse">CSE</option>
+        <option value="eee">EEE</option>
+        <option value="ece">ECE</option>
+        <option value="civil">Civil</option>
+        <option value="mech">Mech</option>
+      </select>
+      <br><br>
+    </div>
+
+  <br><img src="https://www.gprec.ac.in/wp-content/uploads/2019/07/gprec-banner1-1024x347.jpg" alt="Pulla Reddy College Image" width="1600" height="500">
+</body>
+</html>
+

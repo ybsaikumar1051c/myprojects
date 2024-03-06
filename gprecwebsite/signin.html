@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  .myDiv {
+    background-color: gray;
+    width: 500px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
+    border-radius:5px;
+  }
+
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+  }
+
+  .cancel-button {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+
+  .login-button {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: auto; /* Push the button to the right */
+  }
+</style>
+</head>
+<body>
+<center>
+  <h2>Login Page</h2>
+  <div class="myDiv">
+    <label for "username"><b>Username</b></label>
+    <input type="text" id="username" name="username"><br>
+    <label for "password"><b>Password</b></label>
+    <input type="password" id="password" name="password"><br>
+    <div class="checkbox-label">
+      <input type="checkbox" value="confirm" />
+      <label for="confirm">Remember me</label>
+    </div>
+    <br>
+    <button class="cancel-button">Cancel</button>
+    <button class="login-button">Login</button> <br><br>
+    <p><u>ForgotPassword</u></p>
+   
+  </div>
+</center>
+</body>
+</html>
+
+
+
+
