@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .myDiv {
+      background-color: gray;
+      width: 500px;
+      height: 600px;
+      margin: 0 auto; /* Center the content horizontally */
+      text-align: left; /* Align the text to the left */
+      padding: 20px; /* Add some padding to the content */
+      border-radius: 5px;
+    }
+    .Register-button {
+      background-color: white;
+      border: 1px solid #ccc;
+      padding: 5px 10px;
+      cursor: pointer;
+      float: left; /* Float the Register button to the left */
+    }
+    .Cancel-button {
+      background-color: white;
+      border: 1px solid #ccc;
+      padding: 5px 10px;
+      cursor: pointer;
+      float: right; /* Float the Cancel button to the right */
+    }
+  </style>
+<script>
+function validateForm() {
+  var fname = document.forms["myForm"]["fname"].value;
+  var mname = document.forms["myForm"]["mname"].value;
+  var lname = document.forms["myForm"]["lname"].value;
+  var date = document.forms["myForm"]["date"].value;
+  var course = document.forms["myForm"]["Course"].value;
+  var gender = document.forms["myForm"]["gender"];
+  var address = document.forms["myForm"]["Address"].value;
+  var email = document.forms["myForm"]["email"].value;
+  var password = document.forms["myForm"]["password"].value;
+  var cpassword = document.forms["myForm"]["cpassword"].value;
+  var regex = /^[A-Za-z]+$/;
+  var num = document.forms["myForm"]["MobileNumber"].value;
+
+  if (fname === "" || mname === "" || lname === "") {
+    alert("All name fields must be filled out");
+    return false;
+  }
+
+  if (!regex.test(fname) || !regex.test(mname) || !regex.test(lname)) {
+    alert("Names should not contain numbers");
+    return false;
+  }
+
+  if (date === "") {
+    alert("Date of Birth must be selected");
+    return false;
+  }
+
+  if (course === "None") {
+    alert("Please select a course");
+    return false;
+  }
+
+  var genderSelected = false;
+  for (var i = 0; i < gender.length; i++) {
+    if (gender[i].checked) {
+      genderSelected = true;
+      break;
+    }
+  }
+  
+  if (!genderSelected) {
+    alert("Please select a gender");
+    return false;
+  }
+  if (num === "") {
+    alert("Mobile Number should not be empty");
+    return false;
+  } else if (isNaN(num) || num.length !== 10) {
+    alert("Mobile Number should contain exactly 10 digits and should not have characters");
+    return false;
+  }
+
+  if (address === "") {
+    alert("Address must be entered");
+    return false;
+  }
+
+  if (email === "") {
+    alert("Email must be entered");
+    return false;
+  }
+
+  var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+  if (!passwordRegex.test(password)) {
+    alert("Password should be at least 8 characters and contain at least one uppercase letter, one lowercase letter, and one number.");
+    return false;
+  }
+
+  if (password !== cpassword) {
+    alert("Password and Confirm Password must match");
+    return false;
+  }
+
+  return true; // Form validation passed
+}
+
+function redirectToHomePage() {
+  if (validateForm()) {
+    window.location.href = "gprec home.html";
+  }
+}
+</script>
+
+</head>
+<body>
+  <center>
+    <img src="https://www.gprec.ac.in/wp-content/uploads/2019/05/gprec_logo1.png" alt="Pulla Reddy College Image" width="200" height="100">
+    <h1 style="color: blue;">Welcome to GPREC<br>Student Registration</h1><br>
+    <p>Please fill in this form to create an account</p>
+  </center>
+  <div class="myDiv">
+    <form name="myForm" action="/action_page.php" method="post">
+      <label for="fname"><b>First name</b>:</label>
+      <input type="text" id="fname" name="fname"><br><br>
+      <label for="mname"><b>Middle name</b>:</label>
+      <input type="text" id="mname" name="mname"><br><br>
+      <label for="lname"><b>Last name</b>:</label>
+      <input type="text" id="lname" name="lname"><br><br>
+      
+      <label for="date"><b>Date of Birth:</b></label>
+    	<input type="date" id="date" name="date"><br><br>
+	<label for="Degree"><b>Course</b>:</label>
+	<select name="Course" id="Course">
+        	<option value="None">Course</option>
+        	<option value="B.tech">B.tech</option>
+        	<option value="B.E">B.E</option>
+        	<option value="B.sc">B.sc</option>
+        	<option value="B.ed">B.ed</option>
+        	<option value="B.com">B.com</option>
+        </select><br><br>
+	<label for="gender"><b>Gender</b>:</label><br>
+    	<input type="radio" name="gender" value="Male"><b>Male</b><br>
+    	<input type="radio" name="gender" value="FeMale"><b>Female</b><br>
+    	<input type="radio" name="gender" value="Others"><b>Others</b><br><br>
+      <label for="MobileNumber"><b>Mobile Number :</b></label>
+      <span class="input-group-text" id="basic-addon1">
+        <select name="countryCode">
+          <option value="+91">+91</option>
+          <option value="+1">+1</option>
+          <option value="+20">+20</option>
+        </select>
+      </span>
+      <input type="tel" name="MobileNumber" id="MobileNumber"><br><br>
+      <!-- Other form fields here -->
+      <label for="Address"><b>Address</b>:</label>
+    	<input type="text" id="Address" name="Address"><br><br>
+	<label for="email"><b>Email:</b></label>
+    	<input type="email" id="email" name="email"><br><br>
+	<label for="password"><b>Password</b></label>
+    	<input type="password" id="password" name="password"><br><br>
+	<label for="cpassword"><b>Confirm Password</b></label>
+    	<input type="password" id="cpassword" name="cpassword"><br><br>
+      <div style="clear: both;"></div> <!-- Clear the floats to prevent layout issues -->
+      <a href="gprec home.html"><input type="button" class="Register-button" value="Register" onclick="redirectToHomePage()"></a>
+      <br><br>
+      <button class="Cancel-button">Cancel</button><br><br>
+      <center>
+        <p>Already have an Account? <a href="signin.html">Sign In</a></p>
+      </center>
+    </form>
+  </div>
+</body>
+</html>
+
